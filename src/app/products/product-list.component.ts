@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { IProduct } from './product';
 
 @Component ({ 
     selector: 'pm-products',
@@ -6,15 +7,20 @@ import { Component } from '@angular/core';
 })
 
 export class ProductListComponent {
-    pageTitle: string = 'Product List';
-    products: any[] = [{
+    pageTitle = 'Product List';
+    imageWidth = 50;
+    imageMargin = 2;
+    showImage: boolean = false;
+    listFilter: string = 'cart';
+    products: IProduct[] = [
+    {
         "productId": 2,
         "productName": "Garden Cart",
         "productCode": "GDN-0023",
         "releaseDate": "March 18,2021",
         "description": "15 gallon capacity rolling garden cart",
         "price": 32.99,
-        "startRating": 4.2,
+        "starRating": 4.2,
         "imageUrl": "assets/images/garden_cart.png",
     },
     {
@@ -24,7 +30,7 @@ export class ProductListComponent {
         "releaseDate": "May 21,2021",
         "description": "Curved clas steel hammer",
         "price": 8.9,
-        "startRating": 4.8,
+        "starRating": 4.8,
         "imageUrl": "assets/images/hammer.png",
     },
     {
@@ -36,8 +42,8 @@ export class ProductListComponent {
         "price": 11.55,
         "starRating": 3.7,
         "imageUrl": "assets/images/saw.png"
-      },
-      {
+    },
+    {
         "productId": 10,
         "productName": "Video Game Controller",
         "productCode": "GMG-0042",
@@ -46,5 +52,9 @@ export class ProductListComponent {
         "price": 35.95,
         "starRating": 4.6,
         "imageUrl": "assets/images/xbox-controller.png"
-      }]
+    }];
+
+    toggleImage(): void {
+        this.showImage = !this.showImage;
+    }
 }
